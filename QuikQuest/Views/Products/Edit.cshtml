@@ -1,0 +1,91 @@
+﻿@model Product
+<form action="Edit" method="post">
+    <input type="hidden" asp-for="ProductId" />
+
+    <div class="container w-50 border p-3 mt-4 mb-2">
+        <div class="row pb-2">
+            <h2>Add a Product</h2>
+            <hr />
+            <div class="mb-2">
+                <div class="row">
+                    <div class="col-6">
+                        <label asp-for="Name" class="mb-1"></label>
+                        <input type="text" class="form-control" placeholder="Enter the name of your product" asp-for="Name" />
+                        <span asp-validation-for="Name" class="text-danger d-block my-1"></span>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="Category" class="mb-1"></label>
+                        <select class="form-control" id="exampleFormControlSelect1" asp-for="Category">
+                            <option>Gaming</option>
+                            <option>Education</option>
+                            <option>House Equipment</option>
+                            <option>Technology</option>
+                        </select>
+                        <span asp-validation-for="Category" class="text-danger d-block my-1"></span>
+                    </div>
+                </div>
+
+
+                <div class="btn-group my-3" role="group" aria-label="Basic radio toggle button group">
+                    <div class="row">
+                        <div class="col">
+                            <input asp-for="ProductType" type="radio" class="btn-check" id="btnradio1" value="New">
+                            <label asp-for="ProductType" class="btn btn-outline-primary" for="btnradio1">New</label>
+
+                        </div>
+                        <div class="col">
+                            <input asp-for="ProductType" type="radio" class="btn-check" id="btnradio2" value="Used">
+                            <label asp-for="ProductType" class="btn btn-outline-primary" for="btnradio2">Used</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            <label asp-for="Price"></label>
+                            <input type="text" class="form-control" asp-for="Price" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                         <div class="col">
+                            <label asp-for="ImgURL"></label>
+                            <input type="text" class="form-control" asp-for="ImgURL" />
+                            <span asp-validation-for="ImgURL" class="text-danger"></span>
+                        </div> 
+                    </div>
+                </div>
+                 <div class="form">
+                    <label asp-for="Description"></label>
+                    <input type="text" class="form-control" rows="2" asp-for="Description"></input>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+
+                </div> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary form-control" asp-controller="Products" asp-action="Edit">Update Product</button>
+            </div>
+            <div class="col">
+                <a class="btn btn-danger form-control" asp-controller="Products" asp-action="Shop">Go back to the list</a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+        
+        
+
+  
+
+
+
+

@@ -1,0 +1,82 @@
+﻿@model DashboardData
+
+
+
+
+<div class="container">
+    <h1 class="my-2"> Administrator dashboard </h1>
+    <div class="row">
+        <h3> Shop Related tracking</h3>
+        <div class="col-3 mb-2">
+            <label for="productscount"> Products Available in The Shop</label>
+            <input class="form-control mb-2" id="productscount" type="text" placeholder="@Model.ProductsCount" disabled>
+            <div class="col">
+                <a class="btn btn-primary mb-12" asp-action="Add" asp-controller="Products">Add Product</a>
+
+            </div>
+        </div>
+
+        <div class="col-3">
+            <form method="get" action="@Url.Action("Edit", "Products")">
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <label for="productId">Product ID</label>
+                        <input class="form-control" id="productId" type="text" name="id" placeholder="Product ID">
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary mb-3">Edit Product</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        </div>
+        <div class="row">
+
+        <form method="get" action="@Url.Action("Delete", "Products")">
+            <div class="row">
+                <div class="col-3 mb-2">
+                    <label for="productId">Product ID</label>
+                    <input class="form-control" id="productId" type="text" name="id" placeholder="Product ID">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-danger mb-3">Delete Product</button>
+                </div>
+            </div>
+
+        </form>
+
+
+        </div>
+        <div class="row">
+        <h3>User Related Tracking</h3>
+        <div class="col-3">
+            <label for="UserCount"> Amount of Users in the Database</label>
+            <input class="form-control" id="UserCount" type="text" placeholder="@Model.UsersCount" disabled>
+        </div>
+        <div class="col-3">
+            <label for="RoleCount"> Amount of Roles in the Database</label>
+            <input class="form-control" id="RoleCount" type="text" placeholder="@Model.RolesCount" disabled>
+        </div>
+    </div>
+
+    <div class="row">
+        <h3> Feedback Related Tracking</h3>
+        <div class="col-3">
+            <label for="ReviewCount"> Amount of Reviews Sent</label>
+            <input class="form-control" id="ReviewCount" type="text" placeholder="@Model.ReviewsCount" disabled>
+        </div>
+        <div class="col-3">
+            <label for="QuestionCount"> Amount of Questions Sent</label>
+            <input class="form-control" id="QuestionCount" type="text" placeholder="@Model.QuestionsCount" disabled>
+        </div>
+    </div>
+</div>
+

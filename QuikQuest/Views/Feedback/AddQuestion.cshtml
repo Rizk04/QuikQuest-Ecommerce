@@ -1,0 +1,39 @@
+﻿@model Question
+<form method="post" asp-action="AddQuestion">
+    <div class="container w-50 border p-3 mt-4 mb-2">
+        <div class="row pb-2">
+            <h2>Send us your questions!</h2>
+            <hr />
+            <div class="mb-2">
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="Title" class="mb-1"></label>
+                        <input type="text" class="form-control" placeholder="Title" asp-for="Title" />
+                        <span asp-validation-for="Title" class="text-danger d-block my-1"></span>
+                    </div>
+
+                </div>
+                <div class="row mb-3">
+
+                    <div class="form">
+                        <label asp-for="QuestionDetails"></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" asp-for="QuestionDetails"></textarea>
+                        <span asp-validation-for="QuestionDetails" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-lg-3">
+                        <button type="submit" class="btn btn-primary form-control" asp-action="AddQuestion" asp-controller="Feedback">Send Question</button>
+                    </div>
+                    <div class="col-6 col-lg-4">
+                        <a class="btn btn-danger form-control" asp-controller="Home" asp-action="Index">Go back Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

@@ -1,0 +1,72 @@
+﻿@model List<Product>
+@using Microsoft.AspNetCore.Identity
+@using QuikQuest.Areas.Identity.Data
+
+@inject UserManager<QuikQuestUser> UserManager
+@inject SignInManager<QuikQuestUser> SignInManager
+
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="container w-100 text-end">
+        <a class="btn btn-primary mt-4 rounded" asp-controller="products" asp-action="add">
+            <i class="bi bi-plus-square"></i>
+            Add a Product
+        </a>
+    </div>
+}
+
+<div class="container w-100 mb-5">
+
+    
+    <div class="row text-center">
+        @foreach (Product obj in Model.OrderBy(u => u.ProductId))
+        {
+            <div class="col-md-6 col-lg-3 my-4">
+                <div class="card rounded text-center" style="width: 18rem; height:12rem">
+                    <div class="container text-end">
+                   <span class=" badge badge-pill bg-primary">@obj.Category: @obj.ProductType</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>
+                            @if (obj.Name.Length > 18)
+                            {
+
+                                @for (int i = 0; i < 15; i++)
+                                {
+                                    char letter = obj.Name[i];
+                                    if (i == 14)
+                                    {
+                                        @letter <text>...</text>
+                                    }
+                                    else
+                                    {
+                                        @letter
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                @obj.Name
+                            }
+                            </h5>
+
+                       
+                        
+                        <p class="card-text">Price: $@obj.Price</p>
+                        
+                        <div class="container text-end btn-group">
+
+
+                            <a class="btn btn-primary rounded text-center" asp-action="ViewDetails" asp-controller="products" asp-route-id="@obj.ProductId">View Details</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        }
+    </div>
+</div>
